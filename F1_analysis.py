@@ -28,7 +28,6 @@ laps_2023 = lap_times[lap_times['raceId'].isin(race_ids_2023)].copy()
 laps_2023['lap_time_sec'] = laps_2023['milliseconds'] / 1000
 
 # Dropping pit stops, red flags, and safety car laps so the density curve doesn't break
-# We must filter out pit stops and safety cars BEFORE the math happens.
 # We only keep laps between 70 and 110 seconds.
 clean_laps = laps_2023[(laps_2023['lap_time_sec'] >= 70) & (laps_2023['lap_time_sec'] <= 110)]
 
