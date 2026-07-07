@@ -44,10 +44,6 @@ print(f"Pace gap        : {pace_gap:+.3f}s per lap (reliable)")
 print(f"Consistency gap : {consistency_gap:+.1f}% (WARNING: std inflated by pooling circuits)")
 print("------------------------------------------------------------------")
 
-# 3.6 PER-CIRCUIT NORMALIZED consistency — the honest way to measure it.
-# For each race, take every driver's OWN lap-to-lap std, then compare Verstappen's
-# spread to the typical (median) driver's spread AT THAT SAME CIRCUIT. Averaging these
-# race-by-race removes circuit variance AND compares like-with-like (driver vs driver).
 per_race = []
 for rid in race_ids_2023:
     race_laps = clean_laps[clean_laps['raceId'] == rid]
@@ -81,7 +77,7 @@ print(f"Consistency edge (normalized)  : {consistency_gap_norm:+.1f}% tighter th
 print(f"More consistent than the field : in {races_more_consistent} of {n_races} races")
 print(f"Pace advantage (circuit-fair)  : {mean_pace_delta:+.3f}s per lap")
 print("-> Paste the normalized consistency figure into the README.")
-print("------------------------------------------------------------------\n")
+print("\n")
 
 # 4. Generate Visualization
 print("Generating visualization...")
